@@ -1,0 +1,199 @@
+/* File: test2.cpp
+
+   CMSC 202 Computer Science II
+   Spring 2016 Project 2
+
+
+*/
+
+#include <iostream>
+using namespace std ;
+
+#include "pokerhand.h"
+
+const Card::cSuit C = Card::Clubs ;
+const Card::cSuit D = Card::Diamonds ;
+const Card::cSuit H = Card::Hearts ;
+const Card::cSuit S = Card::Spades ;
+
+const int T = 10 ;
+const int J = 11 ;
+const int Q = 12 ;
+const int K = 13 ;
+const int A = 14 ;
+
+const PokerHand::pRank RF = PokerHand::RoyalFlush ;
+const PokerHand::pRank SF = PokerHand::StraightFlush ;
+const PokerHand::pRank FK = PokerHand::FourOfAKind ;
+const PokerHand::pRank FH = PokerHand::FullHouse ;
+const PokerHand::pRank FL = PokerHand::Flush ;
+const PokerHand::pRank ST = PokerHand::Straight ;
+const PokerHand::pRank TK = PokerHand::ThreeOfAKind ;
+const PokerHand::pRank TP = PokerHand::TwoPair ;
+const PokerHand::pRank OP = PokerHand::OnePair ;
+const PokerHand::pRank HC = PokerHand::HighCard ;
+const PokerHand::pRank NR = PokerHand::NoRank ;
+
+
+int main() {
+    PokerHand Arr[47] ;
+
+   // Royal Flush
+   Arr[0] = 
+      PokerHand(Card(C,A),Card(C,Q),Card(C,K),Card(C,T),Card(C,J)) ;
+
+
+   // Straight Flush
+   Arr[1] = 
+      PokerHand(Card(S,9),Card(S,T),Card(S,J),Card(S,Q),Card(S,K)) ;  // K Q J T 9
+   Arr[2] = 
+      PokerHand(Card(D,J),Card(D,9),Card(D,8),Card(D,T),Card(D,7)) ;  // J T 9 8 7
+   Arr[3] = 
+      PokerHand(Card(H,8),Card(H,5),Card(H,7),Card(H,6),Card(H,9)) ;  // 9 8 7 6 5
+   Arr[4] = 
+      PokerHand(Card(S,7),Card(S,6),Card(S,5),Card(S,4),Card(S,3)) ;  // 7 6 5 4 3
+   Arr[5] = 
+      PokerHand(Card(C,3),Card(C,2),Card(C,5),Card(C,4),Card(C,6)) ;  // 6 5 4 3 2
+
+   // Four of a Kind
+   Arr[6] = 
+      PokerHand(Card(C,T),Card(D,T),Card(H,T),Card(S,T),Card(D,J)) ;  // TTTT J
+   Arr[7] = 
+      PokerHand(Card(C,9),Card(D,9),Card(D,K),Card(H,9),Card(S,9)) ;  // 9999 K
+   Arr[8] = 
+      PokerHand(Card(C,7),Card(D,7),Card(H,7),Card(D,4),Card(S,7)) ;  // 7777 4
+   Arr[9] = 
+      PokerHand(Card(C,4),Card(C,Q),Card(D,4),Card(H,4),Card(S,4)) ;  // 4444 Q
+   Arr[10] = 
+      PokerHand(Card(D,2),Card(C,4),Card(D,4),Card(H,4),Card(S,4)) ;  // 4444 2
+
+   // Full House
+   Arr[11] = 
+      PokerHand(Card(C,Q),Card(D,K),Card(H,Q),Card(S,K),Card(S,Q)) ;  // QQQ KK
+   Arr[12] = 
+      PokerHand(Card(C,T),Card(D,8),Card(H,T),Card(S,8),Card(S,T)) ;  // TTT 88
+   Arr[13] = 
+      PokerHand(Card(C,9),Card(D,2),Card(H,9),Card(S,9),Card(C,2)) ;  // 999 22
+   Arr[14] = 
+      PokerHand(Card(C,A),Card(D,7),Card(H,A),Card(S,7),Card(C,7)) ;  // 777 AA
+   Arr[15] = 
+      PokerHand(Card(C,2),Card(D,2),Card(H,7),Card(S,7),Card(C,7)) ;  // 777 22
+
+   // Flush
+   Arr[16] = 
+      PokerHand(Card(S,A),Card(S,K),Card(S,Q),Card(S,J),Card(S,7)) ;  // A K Q J 7
+   Arr[17] = 
+      PokerHand(Card(C,A),Card(C,2),Card(C,9),Card(C,4),Card(C,J)) ;  // A J 9 4 2
+   Arr[18] = 
+      PokerHand(Card(H,Q),Card(H,9),Card(H,7),Card(H,J),Card(H,T)) ;  // Q J T 9 7
+   Arr[19] = 
+      PokerHand(Card(D,T),Card(D,8),Card(D,5),Card(D,6),Card(D,7)) ;  // T 8 7 6 5
+   Arr[20] = 
+      PokerHand(Card(S,2),Card(S,7),Card(S,6),Card(S,8),Card(S,T)) ;  // T 8 7 6 2
+
+   // Straight
+   Arr[21] = 
+      PokerHand(Card(H,K),Card(S,T),Card(D,J),Card(H,Q),Card(H,A)) ;  // A
+   Arr[22] = 
+      PokerHand(Card(C,9),Card(D,T),Card(D,J),Card(H,Q),Card(S,K)) ;  // K
+   Arr[23] = 
+      PokerHand(Card(D,J),Card(H,9),Card(D,8),Card(D,T),Card(C,7)) ;  // J
+   Arr[24] = 
+      PokerHand(Card(H,7),Card(C,6),Card(S,5),Card(D,4),Card(S,3)) ;  // 7
+   Arr[25] = 
+      PokerHand(Card(D,3),Card(C,2),Card(C,5),Card(S,4),Card(C,6)) ;  // 6
+
+   // Three of a Kind
+   Arr[26] = 
+      PokerHand(Card(C,Q),Card(D,3),Card(H,Q),Card(S,Q),Card(H,K)) ;  // QQQ K 3
+   Arr[27] = 
+      PokerHand(Card(C,T),Card(D,8),Card(H,T),Card(S,7),Card(D,T)) ;  // TTT 8 7
+   Arr[28] = 
+      PokerHand(Card(C,9),Card(D,2),Card(H,9),Card(S,9),Card(C,7)) ;  // 999 7 2
+   Arr[29] = 
+      PokerHand(Card(C,A),Card(D,7),Card(H,K),Card(S,7),Card(C,7)) ;  // 777 A K
+   Arr[30] = 
+      PokerHand(Card(C,2),Card(D,A),Card(H,7),Card(S,7),Card(C,7)) ;  // 777 A 2
+
+   // Two Pair
+   Arr[31] = 
+      PokerHand(Card(C,A),Card(D,7),Card(H,A),Card(S,7),Card(C,5)) ;  // AA 77 5
+   Arr[32] = 
+      PokerHand(Card(C,J),Card(D,K),Card(H,4),Card(S,K),Card(C,4)) ;  // KK 44 J
+   Arr[33] = 
+      PokerHand(Card(C,T),Card(D,8),Card(H,9),Card(S,8),Card(H,T)) ;  // TT 88 9
+   Arr[34] = 
+      PokerHand(Card(C,A),Card(D,2),Card(H,9),Card(S,9),Card(C,2)) ;  // 99 22 A
+   Arr[35] = 
+      PokerHand(Card(C,2),Card(D,2),Card(H,9),Card(S,8),Card(C,9)) ;  // 99 22 8
+
+   // One Pair
+   Arr[36] = 
+      PokerHand(Card(C,Q),Card(D,K),Card(H,3),Card(S,8),Card(H,Q)) ;  // QQ K 8 3
+   Arr[37] = 
+      PokerHand(Card(C,T),Card(D,7),Card(H,4),Card(S,8),Card(H,T)) ;  // TT 8 7 4
+   Arr[38] = 
+      PokerHand(Card(C,9),Card(D,2),Card(H,7),Card(S,9),Card(C,K)) ;  // 99 K 7 2
+   Arr[39] = 
+      PokerHand(Card(C,A),Card(D,7),Card(H,Q),Card(S,T),Card(C,7)) ;  // 77 A Q T
+   Arr[40] = 
+      PokerHand(Card(C,2),Card(D,Q),Card(H,7),Card(S,A),Card(C,7)) ;  // 77 A Q 2
+
+   // High Card
+   Arr[41] = 
+      PokerHand(Card(H,A),Card(S,K),Card(S,Q),Card(S,J),Card(S,7)) ;  // A K Q J 7
+   Arr[42] = 
+      PokerHand(Card(C,A),Card(D,2),Card(C,9),Card(C,4),Card(C,J)) ;  // A J 9 4 2
+   Arr[43] = 
+      PokerHand(Card(H,Q),Card(H,9),Card(C,7),Card(H,J),Card(H,T)) ;  // Q J T 9 7
+   Arr[44] = 
+      PokerHand(Card(D,T),Card(H,8),Card(D,5),Card(C,6),Card(H,7)) ;  // T 8 7 6 5
+   Arr[45] = 
+      PokerHand(Card(S,2),Card(S,6),Card(S,7),Card(S,8),Card(C,T)) ;  // T 8 7 6 2
+
+
+   // Testing compare
+
+   int bad = 0 ;
+   int i, j ;
+
+   for (i = 0 ; i < 46 ; i++) {
+
+      if (i < 10) cout << "0" ;
+      cout << i << ":" ;
+
+
+      for (j = 0 ; j < i ; j++) {
+        if (j % 10 == 0) cout << " " ;
+        if ( Arr[i].cmp(Arr[j]) < 0 ) {
+          cout << "O" ;
+        } else {
+          cout << "x" ;
+          bad++ ;
+        }
+      }
+
+      if (j % 10 == 0) cout << " " ;
+      if ( Arr[i].cmp(Arr[i]) ==  0 ) {
+          cout << "O" ;
+      } else {
+          cout << "x" ;
+          bad++ ;
+      }
+     
+      for (j = i+1 ; j < 46 ; j++) {
+        if (j % 10 == 0) cout << " " ;
+        if ( Arr[i].cmp(Arr[j]) > 0 ) {
+          cout << "O" ;
+        } else {
+          cout << "x" ;
+          bad++ ;
+        }
+      }
+
+      cout << endl ;
+   }
+
+   cout << "\nTotal number of errors: " << bad << endl ;
+
+}
